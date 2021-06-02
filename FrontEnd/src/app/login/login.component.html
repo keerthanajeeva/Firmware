@@ -1,0 +1,31 @@
+
+  
+  <mat-card >
+    <div class="signin">
+       <p> <b> SIGN IN </b></p>
+       <hr style="border-color:#979393; opacity: 0.2;">
+    </div>
+    <form #accountForm="ngForm" >
+         <div class="login">
+            <mat-form-field class="full-width-field" appearance="outline">
+               <mat-label > Email ID</mat-label>
+               <input matInput type="email" name="emailId" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"  placeholder="Email ID" ngModel  [(ngModel)]="emailId" required>
+            </mat-form-field>
+         </div>
+         <div class="Password">
+            <mat-form-field class="full-width-field" appearance="outline">
+               <mat-label > Password</mat-label>
+               <input matInput name="password" type="password" placeholder="Password" ngModel  [(ngModel)]="password" required>
+            
+            </mat-form-field>
+         </div>
+         
+         <div class="forgotpassword">
+            <a  class="forgotpassword"> <b>Forgot password?  </b></a>
+         </div>
+         <div class="button-signin">
+            <button mat-raised-button (click)="login(accountForm)"> SIGN IN</button>
+         </div>
+
+   </form>
+ </mat-card>

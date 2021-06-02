@@ -1,0 +1,124 @@
+.tyt{
+    margin-bottom: 20px; color: #666666;
+   font-size: 15px;
+   font-weight: 700;
+   margin-top: 20px;
+   text-indent: 50px;
+   cursor: pointer;
+}
+.tyts{
+    font-size: 15px;
+    font-weight: 500;
+    text-indent: 60px;
+    color: #666666; 
+    position: relative;
+    top: 45px;   
+}
+::ng-deep .mat-tab-label {
+ 
+    width: fit-content;
+     
+    margin-right: 10px;
+    background-color: whitesmoke !important;
+    color: #666666;
+    font-weight: 700;
+    border-radius: 10px !important;
+    
+}
+
+::ng-deep .mat-tab-group{
+    width: 1000px;
+    margin: 0px 0px 20px 30px;
+}
+
+
+/* Styles for the active tab label */
+::ng-deep .mat-tab-label.mat-tab-label-active { 
+  
+    width: fit-content;
+ 
+    background-color: white !important;
+    color: #666666;
+    font-weight: 700;
+    opacity: inherit !important;
+}
+
+::ng-deep .mat-ink-bar {
+    background-color: #005F9E !important;
+    height: 5px !important;
+}
+
+.mat-card{
+    padding: 30px;
+}    
+
+.one{
+    background-color: #005F9E;
+    color: white;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+.two{
+    background-color: #005F9E;
+    color: white;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+
+
+@media only screen and (max-width:1024px) {
+
+    ::ng-deep .mat-tab-group {
+        width: 100%;
+        margin: 0px 0px 0px 00px;
+    }
+ 
+    .mat-card{
+        padding: 10px;
+    }
+    
+    ::ng-deep .mat-tab-label {
+ 
+        width: 50%;
+         
+        margin-right: 0px;
+        background-color: whitesmoke !important;
+        color: #666666;
+        font-weight: 700;
+        border-radius: 10px !important;
+        
+    }
+
+    ::ng-deep .mat-tab-label.mat-tab-label-active { 
+  
+        width: 50%;
+     
+        background-color: white !important;
+        color: #666666;
+        font-weight: 700;
+        opacity: inherit !important;
+    }
+
+    .tyts{
+        position: relative;
+        top: 0px;
+        text-indent: 0em;
+        margin: 10px;
+
+    }
+
+    .tyt{
+        text-indent: 0px;
+    }   
+    
+}
+
+@media only screen and (min-width:992px) and (max-width:1200px) {
+
+    ::ng-deep .mat-tab-group {
+        width: 100%;
+       
+    }
+
+}

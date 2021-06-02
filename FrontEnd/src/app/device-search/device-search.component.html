@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <p class="tyt"><span>Menu</span> > <span (click)="dash();">Fireware Manager</span> > <span>Manage Firmware</span> > <span>Customer Ashok Leyland</span></p>
+            <mat-divider></mat-divider>
+        </div>
+    </div>
+</div>
+
+<mat-card>
+    <mat-icon class="icons">cloud_upload</mat-icon>
+    <p class="t1">Upgrade your firmware commands here </p>
+
+    <button mat-raised-button (click)="single()" class="one ">
+        <mat-icon class="con1">search</mat-icon>
+        Single Device Search
+    </button>
+    <button mat-raised-button (click)="multi()" class="two">
+        <mat-icon class="con1">arrow_circle_up
+        </mat-icon>
+        Multiple Device Update
+    </button>
+</mat-card>

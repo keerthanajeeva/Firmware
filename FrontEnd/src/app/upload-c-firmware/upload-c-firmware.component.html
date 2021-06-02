@@ -1,0 +1,122 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <p class="tyt"><span>Menu</span> > <span (click) ="dash()">Fireware Manager</span> > <span>Upload Firmware Version</span> > <span>Customer Ashok Leyland</span></p>
+            <mat-divider></mat-divider>
+        </div>
+    </div>
+</div>
+<p class="tyts">Upload C Firmware</p>
+<mat-tab-group mat-align-tabs="end">
+    <mat-tab label="Single Firmware Upload">
+        <mat-card>
+            <div class="container-fluid">
+                <div class="row">
+                    <form #uploadCForm="ngForm" >
+                        <div class="col-sm-12"> 
+                            <mat-form-field style="width: 100%;"  appearance="standard">
+                               <mat-label >VERSION NAME</mat-label>
+                                <input matInput  name="versionName" placeholder="VERSION NAME" ngModel maxlength="25" [(ngModel)]="uploadC.Name" #vnameControl="ngModel" required >
+                
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-12">
+                            <mat-form-field style="width: 100%;"  appearance="standard">
+                                <mat-label >SERVER IP</mat-label>
+                                <input matInput  name="serverIp" placeholder="SERVER IP" ngModel maxlength="25" [(ngModel)]="uploadC.ServerIP" required>
+                
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-6">
+                            <mat-form-field style="width: 100%;" appearance="standard" >
+                                <mat-label >USERNAME</mat-label>
+                                <input matInput name="userName" placeholder="USERNAME" ngModel maxlength="25" [(ngModel)]="uploadC.UserName" required>
+                
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-6">
+                            <mat-form-field style="width: 100%;" appearance="standard">
+                                <mat-label >PASSWORD</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'" name="password"  ngModel  [(ngModel)]="uploadC.Password" required>
+                                <button mat-icon-button matSuffix  type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-6">
+                            <mat-form-field style="width: 100%;" appearance="standard">
+                                <mat-label >FILE PATH</mat-label>
+                                <input matInput  name="filePath" placeholder="FILE PATH" ngModel  [(ngModel)]="uploadC.FilePath"  required>
+                
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-6">
+                            <mat-form-field style="width: 100%;" appearance="standard" >
+                                <mat-label >FILE SIZE</mat-label>
+                                <input matInput  name="fileSize" placeholder="FILE SIZE" ngModel maxlength="25" [(ngModel)]="uploadC.FileSize"  required>
+                
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-12">
+                            <mat-form-field style="width: 100%;" appearance="standard" >
+                                <mat-label >RELEASE NOTES</mat-label>
+                                <input matInput  name="releseNote" placeholder="RELEASE NOTES" ngModel maxlength="25" [(ngModel)]="uploadC.ReleaseNote"  required>
+                
+                            </mat-form-field>
+                        </div>
+                
+                        <button mat-raised-button (click)="onClicking(uploadCForm)" class="one">
+                            <mat-icon>save</mat-icon>
+                            SAVE
+                        </button>
+                        <button mat-raised-button type="reset" (click)="uploadFormreset(uploadCForm)" class="two">
+                            <mat-icon>replay
+                            </mat-icon>
+                            RESET
+                        </button>
+                
+                    </form>
+                </div>
+            </div>       
+        </mat-card>
+    </mat-tab>
+    <mat-tab label="Edit Firmware File Size">
+
+        <mat-card>
+            <div class="container-fluid">
+                <div class="row">
+                    <form #editForm="ngForm" >
+                        <div class="col-sm-12"> 
+                            <mat-form-field style="width: 100%;"  appearance="standard">
+                                <mat-label>Version Name</mat-label>
+                                <mat-select name="Name" placeholder="Version Name"  [(ngModel)]="Name" required>
+                                    <mat-option *ngFor="let message of messages" (click)="listed(message)"  [value]="message.Name" >
+                                      {{message.Name}}
+                                    </mat-option>                 
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-12">
+                            <mat-form-field style="width: 100%;"  appearance="standard">
+                                <mat-label >FILE SIZE</mat-label>
+                                <input matInput type="number" name="FileSize" placeholder="FILE SIZE" ngModel maxlength="25" [(ngModel)]="FileSize"  required>
+                
+                            </mat-form-field>
+                        </div>
+                        <button mat-raised-button (click)="onEdit(editForm)" class="one">
+                            <mat-icon>save</mat-icon>
+                            SAVE
+                        </button>
+                        <button mat-raised-button type="reset" (click)="editFormreset(editForm)" class="two">
+                            <mat-icon>replay
+                            </mat-icon>
+                            RESET
+                        </button>
+                
+                    </form>
+                </div>
+            </div>          
+        </mat-card>
+    </mat-tab>
+    
+  </mat-tab-group>

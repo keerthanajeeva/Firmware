@@ -1,0 +1,57 @@
+.tyt{
+    margin-bottom: 20px; color: #666666;
+   font-size: 15px;
+   font-weight: 700;
+   margin-top: 20px;
+   text-indent: 50px;
+   cursor: pointer;
+}
+.tyts{
+    font-size: 15px;
+    font-weight: 500;
+    text-indent: 50px;
+    color: #666666; 
+    margin-top: 20px;
+
+}
+
+.mat-card{
+    width: 1000px;
+    margin: 30px;
+    padding: 30px;
+}
+
+
+.one{
+    background-color: #005F9E;
+    color: white;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+.two{
+    background-color: #005F9E;
+    color: white;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+
+@media only screen and (max-width:1024px) {
+    .mat-card{
+        width: 100%;
+        margin: 0px;
+        padding: 10px;
+    }
+
+    .tyts{
+        position: relative;
+        top: 0px;
+        text-indent: 0em;
+        margin: 10px;
+
+    }
+
+    .tyt{
+        text-indent: 0px;
+    }  
+}

@@ -1,0 +1,277 @@
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-12">
+          <p class="tyt"><span>Menu</span> > <span (click)="dash()">Fireware Manager</span> > <span>Other OTAP Command</span> > <span>Customer Ashok Leyland</span></p>
+          <mat-divider></mat-divider>
+      </div>
+  </div>
+</div>
+<p class="tyts">Firmware Upgrade Command</p>
+<mat-tab-group mat-align-tabs="end" selectedIndex="{{this.id}}" (selectedTabChange)="changeTab($event)">
+  <mat-tab label="Single Device Search"> 
+      <mat-card>
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-sm-8 cleft">
+                      <p>Single device search option is to handle upgradation of the searched device</p>
+                      <div class="example-container" >
+                      <mat-form-field style="width: 100%;" appearance="outline">
+                         
+                          <input style="text-indent: 2em;" matInput (keyup)="applyFilter($event)" placeholder="Search Device" #input>  
+                           <mat-icon style="color: gray;" matPrefix>search</mat-icon>
+                         
+                      </mat-form-field>
+                     
+                      <mat-form-field style="width: 65%;" appearance="standard">
+                          <mat-label>SELECT COMMAND</mat-label>
+                          <mat-select name="javaV" placeholder="JAVA VERSION">
+                            
+                            <div *ngFor="let message of messages">
+                              <mat-option *ngIf="message.DeviceType == deviceType" (click)="listed(message)" [value]="message.CommandName">
+                                {{message.CommandName}}
+                              </mat-option>
+                            </div>
+                          
+                          </mat-select>
+                        </mat-form-field>
+                        <button mat-raised-button class="btn2" (click)="AddCommand()">ADD COMMAND</button>
+                  </div>
+                  </div>
+                  <div class="col-sm-4">
+                     
+
+                      <button mat-raised-button class="btn1" (click)="PostData()">REQUEST UPGRADE COMMAND</button>
+                        
+                  </div>
+              </div>
+          </div>        
+          
+
+      </mat-card>
+  </mat-tab>
+  <mat-tab label="Multiple Device Update"> 
+      <mat-card class="multi">
+          <div *ngIf="tabIndex === 1">
+              <div class="pack">
+              <p>Multiple Device Update is to handle upgrades of multiple options under one go.</p>
+              <p>To upload the device list click the device upload button to upload an excel sheet.</p>
+              
+            </div>
+              <p class="back">Note : The format for the upload is to list all device in one column with header title as <b>Device ID</b></p>
+              <button mat-raised-button (click)="fileInput.click()" class="one">
+                <mat-icon class="con1">file_upload</mat-icon>
+                Device Upload
+            </button>
+            <input #fileInput  type="file" name="files"  accept=".xlsx,.csv" id="myfile" (change)="addfile($event.target.files)" style="display:none;" />
+          </div>
+      </mat-card>    
+  </mat-tab>
+
+</mat-tab-group>
+
+<div *ngIf="tabIndex === 0" >
+<div *ngIf="this.temp != null">
+  <!-- <div *ngFor="let edu of emp1">
+    {{edu.DeviceID}}
+  </div> -->
+  <button mat-raised-button (click)="exporter.exportTable('xlsx', {fileName: 'Other OTAP Command Report'})" class="btns1">DOWNLOAD <mat-icon style="padding: 0 10px; vertical-align: middle;">cloud_download</mat-icon></button>
+  <table mat-table  matTableExporter [dataSource]="dataSource" matSort  class="mat-elevation-z8" #exporter="matTableExporter">
+
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef="let row; let i = index" ><mat-checkbox (change)="$event ? toggleRow(row, i) : null" color="primary"></mat-checkbox></th>
+      <td mat-cell *matCellDef="let row; let i = index">    <mat-checkbox color="primary" (click)="$event.stopPropagation()"
+        (change)="$event ? toggleRow(row, i) : null"
+        [checked]="selection.isSelected(row)"
+        [aria-label]="checkboxLabel(row)"></mat-checkbox> </td>
+    </ng-container>
+    
+
+    
+      <ng-container matColumnDef="DeviceID">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+    
+        <td mat-cell *matCellDef="let element"><a style=" text-decoration-line: underline;color: #005F9E;">  {{element.DeviceID}} </a></td>
+
+      </ng-container>
+
+  
+      <ng-container matColumnDef="DeviceType">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> DEVICE<br>TYPE </th>
+        <td mat-cell *matCellDef="let element"> {{element.DeviceType}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Customer">
+        <th mat-header-cell *matHeaderCellDef > CUSTOMER<br>NAME </th>
+        <td mat-cell *matCellDef="let element"> {{element.Customer}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="NetworkProvider">
+        <th mat-header-cell *matHeaderCellDef> NETWORK<br>PROVIDER </th>
+        <td mat-cell *matCellDef="let element"> {{element.NetworkProvider}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="MobileNo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> MOBILE NO. </th>
+        <td mat-cell *matCellDef="let element"> {{element.MobileNo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Model">
+        <th mat-header-cell *matHeaderCellDef> VEHICLE<br>TYPE NAME </th>
+        <td mat-cell *matCellDef="let element"> {{element.Model}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="VehicleTypeName">
+        <th mat-header-cell *matHeaderCellDef > MODEL </th>
+        <td mat-cell *matCellDef="let element"> {{element.VehicleTypeName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="CurrentCVersion">
+        <th mat-header-cell *matHeaderCellDef> CURRENT <br>C VERSION</th>
+        <td mat-cell *matCellDef="let element"> {{element.CurrentCVersion}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="CurrentJavaVersion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CURRENT<br>JAVA VERSION </th>
+        <td mat-cell *matCellDef="let element"> {{element.CurrentJavaVersion}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Ignition">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> IGNITION </th>
+        <td mat-cell *matCellDef="let element"> {{element.Ignition}} </td>
+      </ng-container>
+    
+ 
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  
+   
+      <mat-paginator style-paginator [showTotalPages]="4" [length]="dataSource.data.length"
+      [pageSize]="1"></mat-paginator>
+     
+    </div>
+    <div *ngIf="this.temp == null">
+      <h3 style="color: #666; text-align: center; font-weight: 500;">Records Not found</h3>
+    </div>
+
+    
+</div>
+<div *ngIf="tabIndex === 1 && !loadingFlag1" >
+
+<mat-card style="margin: 20px;">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-sm-8 cleft">
+              <p>Single device search option is to handle upgradation of the searched device</p>
+              <div class="example-container" >
+              <mat-form-field style="width: 100%;" appearance="outline">
+                 
+                  <input style="text-indent: 2em;" matInput (keyup)="applyFilter1($event)" placeholder="Search Device" #input>  
+                   <mat-icon style="color: gray;" matPrefix>search</mat-icon>
+                 
+              </mat-form-field>
+             
+              <mat-form-field style="width: 65%;" appearance="standard">
+                <mat-label>SELECT COMMAND</mat-label>
+                <mat-select name="javaV" placeholder="JAVA VERSION">
+                  
+                  <div *ngFor="let message of messages">
+                    <mat-option *ngIf="message.DeviceType == deviceType" (click)="listed(message)" [value]="message.CommandName">
+                      {{message.CommandName}}
+                    </mat-option>
+                  </div>
+                
+                </mat-select>
+              </mat-form-field>
+                <button mat-raised-button class="btn2" (click)="AddCommand()">ADD COMMAND</button>
+          </div>
+          </div>
+          <div class="col-sm-4">
+             
+         
+              <button mat-raised-button class="btn1" (click)="PostData()">REQUEST UPGRADE COMMAND</button>
+                
+          </div>
+      </div>
+  </div>        
+  
+
+</mat-card>
+
+<table mat-table  matTableExporter [dataSource]="dataSource1" matSort  class="mat-elevation-z8" #exporter="matTableExporter">
+
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef="let row; let i = index" ><mat-checkbox (change)="$event ? toggleRow(row, i) : null" color="primary"></mat-checkbox></th>
+    <td mat-cell *matCellDef="let row; let i = index">    <mat-checkbox color="primary" (click)="$event.stopPropagation()"
+      (change)="$event ? toggleRow(row, i) : null"
+      [checked]="selection.isSelected(row)"
+      [aria-label]="checkboxLabel(row)"></mat-checkbox> </td>
+  </ng-container>
+  
+
+  
+    <ng-container matColumnDef="DeviceID">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let element"><a style=" text-decoration-line: underline;color: #005F9E;">  {{element.DeviceID}} </a></td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="DeviceType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> DEVICE<br>TYPE </th>
+      <td mat-cell *matCellDef="let element"> {{element.DeviceType}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Customer">
+      <th mat-header-cell *matHeaderCellDef > CUSTOMER<br>NAME </th>
+      <td mat-cell *matCellDef="let element"> {{element.Customer}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="NetworkProvider">
+      <th mat-header-cell *matHeaderCellDef> NETWORK<br>PROVIDER </th>
+      <td mat-cell *matCellDef="let element"> {{element.NetworkProvider}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="MobileNo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> MOBILE NO. </th>
+      <td mat-cell *matCellDef="let element"> {{element.MobileNo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Model">
+      <th mat-header-cell *matHeaderCellDef> VEHICLE<br>TYPE NAME </th>
+      <td mat-cell *matCellDef="let element"> {{element.Model}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="VehicleTypeName">
+      <th mat-header-cell *matHeaderCellDef > MODEL </th>
+      <td mat-cell *matCellDef="let element"> {{element.VehicleTypeName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="CurrentCVersion">
+      <th mat-header-cell *matHeaderCellDef> CURRENT <br>C VERSION</th>
+      <td mat-cell *matCellDef="let element"> {{element.CurrentCVersion}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="CurrentJavaVersion">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> CURRENT<br>JAVA VERSION </th>
+      <td mat-cell *matCellDef="let element"> {{element.CurrentJavaVersion}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Ignition">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> IGNITION </th>
+      <td mat-cell *matCellDef="let element"> {{element.Ignition}} </td>
+
+     
+    </ng-container>
+   
+  
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+   
+
+  </table>
+
+  
+ 
+
+
+</div>

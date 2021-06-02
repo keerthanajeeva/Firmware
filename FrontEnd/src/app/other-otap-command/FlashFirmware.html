@@ -1,0 +1,13 @@
+
+<form #addCommandForm="ngForm" style="text-align: center; margin: 20px;" >
+<div *ngFor="let message of ClusterArrays">
+    <mat-form-field appearance="outline" style="width: 100%;" >
+        <mat-label >{{message}}</mat-label>
+        <input matInput [name]="message" ngModel  required>
+
+    </mat-form-field>
+</div>
+<button mat-raised-button color="primary" (click)="AddCommand(addCommandForm)" style=" background-color: #005F9E !important">
+    Submit
+</button>
+</form>

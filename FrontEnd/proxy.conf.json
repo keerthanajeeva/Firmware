@@ -1,0 +1,78 @@
+{
+  "/api7": {
+    "target": "https://api-stg.trimble.com/t/trimble.com",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+    "^/api7": ""
+    }
+    },
+  "/api6": {
+    "target": "https://identity-stg.trimble.com/token?grant_type=client_credentials",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+    "^/api6": ""
+    }
+    },
+  "/api5": {
+    "target": "https://identity.trimble.com/token?grant_type=client_credentials",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+    "^/api5": ""
+    }
+    },
+  "/api4": {
+    "target": "https://api.trimble.com/t/trimble.com/oem/2.0/fwmanagerapi/file/upload",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+    "^/api4": ""
+    }
+    },
+  "/api3": {
+    "target": "https://api-stg.trimble.com/t/trimble.com/osgoperations-api-dev/1.0/Outbound/PublishOutbound",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+    "^/api3": ""
+    }
+    },
+    "/api2": {
+      "target": "https://api-stg.trimble.com/t/trimble.com/osgoperations-api-dev/1.0/Outbound/Firmware?query=%7B%22ID%22:%22tap76%22,%22IsActive%22:1%7D",
+      "secure": true,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api2": ""
+      }
+
+
+    },
+    "/api1": {
+        "target": "https://api-stg.trimble.com/t/trimble.com/osgoperations-api-dev/1.0/Outbound/Manage",
+        "secure": true,
+        "changeOrigin": true,
+        "pathRewrite": {
+          "^/api1": ""
+        }
+      },
+      
+      "/api": {
+      "target": "https://api-stg.trimble.com/t/trimble.com/osgoperations-api-dev/1.0/Dashboard/DeviceStatus?query=%7B%22Date%22:%222021-2-15%22,%22status%22:%22Total%22,%22OEMID%22:%221%22,%22start%22:%220%22,%22limit%22:10,%22DeviceType%22:%22TAP86%22%7D",
+      "secure": true,
+      "changeOrigin": true,
+      "pathRewrite": {
+      "^/api": ""
+      }
+      
+      
+      }
+
+
+
+
+}
+
+
+  

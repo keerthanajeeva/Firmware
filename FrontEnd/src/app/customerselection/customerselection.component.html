@@ -1,0 +1,45 @@
+<mat-card class="logged-in">
+   <div class="loggedin">
+      <p> <b> LOGGED IN AS: {{this.mail}} </b> </p>
+   </div>
+ </mat-card>
+ <div class="h">
+   <p> <b>  CUSTOMER SELECTION: </b></p>
+ </div>
+ <div class="main-container">
+   <mat-card class="form">
+      <mat-form-field class="mat-form" appearance="outline">
+         <mat-label>
+            (1050) Ashok Leyland
+         </mat-label>
+         <mat-select  #customerSelect [(ngModel)]="customerValue">
+         <mat-option (click)="showDiv= true;buttonDisabled=!true;this.selectedSub='' " *ngFor="let customer of customer" [value]="customer.ID">{{customer.ID}} {{customer.Name}}</mat-option>
+        
+      
+      </mat-select>
+      </mat-form-field>
+   </mat-card>
+ 
+   <div class=reset-and-select>
+      <button class="reset" (click)="reset()" mat-raised-button>Reset</button>
+      <button class="key" [disabled]="buttonDisabled"  (click)="change()" mat-raised-button>Select</button>
+    </div>
+ </div>
+ 
+ <!-- <mat-card class="form">
+   <mat-form-field class="mat-form" appearance="outline">
+      <mat-label>
+         Customers
+      </mat-label>
+      <mat-select [(ngModel)]="selectedSub" >
+      <div *ngFor="let customer of customeraccountrelationshipQuery">
+         <div *ngIf ="customer.fk_CustomerId == customerValue">
+            <mat-option (click)="buttonDisabled=!true"  [value]="customer" >{{customer.fk_CustomerId}} {{customer.AccountName}}</mat-option>
+         </div>
+      </div>
+      </mat-select>
+   </mat-form-field>
+ </mat-card> -->
+ 
+ 
+ 

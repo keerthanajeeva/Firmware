@@ -1,0 +1,223 @@
+
+<div class="example-container">
+  <mat-toolbar class="toolbar">
+    <mat-toolbar-row>
+      <mat-icon class="menus"  (click)="sidenav.toggle()">menu</mat-icon> 
+      
+     <h3 class="logo">OSG OPS</h3>
+      <div class="rightside">
+        <a  matTooltip="Global Search"
+        aria-label="Button that displays a tooltip when focused or hovered over"> <img src="../assets/Search.png"/></a>
+       <!-- <mat-menu #menuse="matMenu" >
+        [matMenuTriggerFor]="menuse"
+          <div class="search" mat-menu-item [disableRipple]="true" (click)="$event.stopPropagation()">
+            <mat-form-field appearance= "outline" class="example-chip-list" >
+              <mat-label>Search</mat-label>
+              <mat-chip-list #chipList aria-label="Fruit selection">
+                <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                        [removable]="removable" (removed)="remove(fruit)">
+                  {{fruit.name}}
+                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="Search"
+                      [matChipInputFor]="chipList"
+                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                      [matChipInputAddOnBlur]="addOnBlur"
+                      (matChipInputTokenEnd)="add($event)">
+              </mat-chip-list>
+            </mat-form-field>
+          </div>
+        </mat-menu>
+        -->
+        <a  matTooltip="Notification"
+        aria-label="Button that displays a tooltip when focused or hovered over"> <img src="../assets/Notifications.png"/></a>
+       <!-- <mat-menu #menued="matMenu">
+         [matMenuTriggerFor]="menued"
+          <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Redial</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>voicemail</mat-icon>
+            <span>Check voice mail</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            <span>Disable alerts</span>
+          </button>
+        </mat-menu>-->
+        <a  matTooltip="App Launcher"
+        aria-label="Button that displays a tooltip when focused or hovered over"> <img src="../assets/App launcher.png"/> </a>
+      
+   <!--     <mat-menu #menu1="matMenu" >
+          [matMenuTriggerFor]="menu1" 
+          <span mat-menu-item [disableRipple]="true" (click)="$event.stopPropagation()">
+         
+        <form class="example-form">
+          <h5 style="text-align: center;">Apps</h5>
+          <div class="row">
+            <div class="col-sm-4 col-xs-4">
+              <div class="sub-menu">
+                <mat-icon>home</mat-icon>
+                <a class="menu-title">Home</a>
+              </div>
+             
+            
+            </div>
+            <div class="col-sm-4 col-xs-4" > 
+               <div class="sub-menu">
+                  <mat-icon>account_box</mat-icon>
+                  <a class="menu-title">Account</a>
+            </div>
+          </div>
+            <div class="col-sm-4 col-xs-4">
+              <div class="sub-menu">
+                <mat-icon>build_circle</mat-icon>
+                <a class="menu-title">Build</a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4 col-xs-4">
+              <div class="sub-menu">
+                <mat-icon>explore</mat-icon>
+                <a class="menu-title">Explore</a>
+              </div>
+             
+            
+            </div>
+            <div class="col-sm-4 col-xs-4" > 
+               <div class="sub-menu">
+                  <mat-icon>
+                    pending</mat-icon>
+                  <a class="menu-title">
+                    Pending</a>
+            </div>
+          </div>
+            <div class="col-sm-4 col-xs-4">
+              <div class="sub-menu">
+                <mat-icon>settings</mat-icon>
+                <a class="menu-title">Settings</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4 col-xs-4">
+              <div class="sub-menu">
+                <mat-icon>save</mat-icon>
+                <a class="menu-title">Save</a>
+              </div>
+             
+            
+            </div>
+            <div class="col-sm-4 col-xs-4" > 
+               <div class="sub-menu">
+                  <mat-icon>access_alarms</mat-icon>
+                  <a class="menu-title">Alarm</a>
+            </div>
+          </div>
+            <div class="col-sm-4 col-xs-4">
+              <div class="sub-menu">
+                <mat-icon>wifi_tethering</mat-icon>
+                <a class="menu-title">Wifi</a>
+              </div>
+            </div>
+          </div>
+       
+        <button color="primary" mat-raised-button>MORE..</button>
+        </form>
+               </span>
+        </mat-menu>-->
+        <a matTooltip="Profile"
+        aria-label="Button that displays a tooltip when focused or hovered over"> <img src="../assets/Profile.png"/> </a>
+
+    </div>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container" autosize>
+    <mat-sidenav #sidenav class="example-sidenav" mode="side"  opened role="navigation" position="start">
+      
+      <mat-nav-list class="dashboard" style="height: 50%;">
+     
+        <a mat-list-item routerLink="/Firmware" routerLinkActive="active-list-item " >
+          <img src="../assets/Dashboard.png"/>
+        </a>
+
+      
+        <a mat-list-item (click)="menuTrigger.openMenu()"  routerLinkActive="active-list-item" [routerLinkActiveOptions]="{exact: true}" ><div #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="menu1"></div>
+          <img src="../assets/Manage firmware.png"/>
+         
+        <mat-menu #menu1="matMenu" class="custom-class1">
+          <div *ngFor="let device of emp">
+            <div *ngIf="device.IsActive == true">
+          <button   class="sidetxt"  [routerLink] = "'/deviceSearch/'+device.DeviceType" [routerLinkActive] ='"active-list-item1"' [routerLinkActiveOptions]="{exact: true}" 
+            mat-menu-item>{{device.DeviceType}}</button>
+          <mat-divider></mat-divider>
+      
+          <p hidden [routerLink] = "['/deviceSearch/'+device]" >single</p>
+          <p hidden routerLink="/deviceSearch/single_device/1">single</p>
+          <p hidden routerLink="/deviceSearch/single_device/2">multi</p>
+        </div>
+        </div>
+        </mat-menu>
+      </a>
+
+      <a mat-list-item (click)="menuTrigger3.openMenu()"  routerLinkActive="active-list-item" [routerLinkActiveOptions]="{exact: true}"><div #menuTrigger3="matMenuTrigger"  [matMenuTriggerFor]="menu3"></div>
+        <img src="../assets/Other OTAP command.png"/>
+        <mat-menu #menu3="matMenu" class="custom-class" >
+          <div *ngFor="let device of OtapDevice">
+            
+            <button  class="sidetxt"  [routerLink] = "'/othercommand/'+device.name" [routerLinkActive] ='"active-list-item1"' [routerLinkActiveOptions]="{exact: true}" 
+              mat-menu-item  (click)="exit()">{{device.name}}</button>
+            <mat-divider></mat-divider>
+          </div>
+        </mat-menu>
+        </a>
+        <a mat-list-item (click)="menuTrigger1.openMenu()"  routerLinkActive="active-list-item" [routerLinkActiveOptions]="{exact: true}"><div #menuTrigger1="matMenuTrigger"  [matMenuTriggerFor]="menu"></div>
+        <mat-icon>storage</mat-icon>
+        
+        <mat-menu #menu="matMenu"  class="custom-class" >
+          <button class="sidetxt1" mat-menu-item  routerLink="/upload/c" routerLinkActive="active-list-item1">UPLOAD C FIRMWARE</button>
+          <mat-divider></mat-divider>
+          <button class="sidetxt1" mat-menu-item routerLink="/upload/java" routerLinkActive="active-list-item1"> UPLOAD JAVA FIRMWARE</button>
+          <mat-divider></mat-divider>
+          <button class="sidetxt1" mat-menu-item routerLink="/upload/iot" routerLinkActive="active-list-item1">UPLOAD IOT FIRMWARE</button>
+          <mat-divider></mat-divider>
+          <button class="sidetxt1" mat-menu-item routerLink="/upgrade" routerLinkActive="active-list-item1">UPDATE FIRMWARE COMBINATION</button>
+        </mat-menu>
+         </a>
+        <a mat-list-item (click)="menuTrigger2.openMenu()"  routerLinkActive="active-list-item" [routerLinkActiveOptions]="{exact: true}"><div #menuTrigger2="matMenuTrigger"  [matMenuTriggerFor]="menu2"></div>
+          <i class="fa fa-binoculars"></i>
+          
+         
+         <mat-menu #menu2="matMenu" >
+           <button class="sidetxt1" mat-menu-item routerLink="/outboundstatus"  routerLinkActive="active-list-item1">OUTBOUND STATUS CDG</button>
+          
+         </mat-menu>
+         </a>
+        
+         <a mat-list-item routerLink="/firmwarereport" routerLinkActive="active-list-item " >
+         <img src="../assets/Firmware Report.png"/>
+         
+         </a>
+         <a style="position: relative; top: 80%;" (click)="dashboard()" mat-list-item>
+           <img src="../assets/help.png">
+         </a>
+      
+      
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+
+ 
+
+</div>

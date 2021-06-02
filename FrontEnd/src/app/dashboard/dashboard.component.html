@@ -1,0 +1,76 @@
+<div class="container-fluid main">
+
+    <div class="row">
+        <div class="col-sm-12 head">
+           <h2>WELCOME TO OSG OPS</h2>
+        </div>  
+
+
+        
+
+    </div>
+</div>
+
+<div class="container-fluid mainpg">
+    <p  class="tyt">Please Select Your Application</p>
+    <div class="row">
+      
+        <div class="col-sm-4 col-lg-2" >
+            
+         <mat-card class="imgs" (click)="toggleActive($event)">
+           <mat-icon class="ins">article</mat-icon>
+             <h4>ASSET</h4>
+             <h4>MANAGER</h4>
+         </mat-card>
+        </div>   
+        <div class="col-sm-4 col-lg-2">
+            
+            <mat-card class="imgs" (click)="toggleActive($event)">
+              <mat-icon  class="ins">router</mat-icon>
+              <h4>DEVICE</h4>
+              <h4>MANAGER</h4>
+            </mat-card>
+        </div>   
+
+        <div class="col-sm-4 col-lg-2">
+            
+            <mat-card class="imgs" (click)="firmware();toggleActive($event)">
+              <mat-icon class="ins">memory</mat-icon>
+              <h4>FIRMWARE</h4>
+              <h4>MANAGER</h4>
+            </mat-card>
+        </div>   
+           
+        <div class="col-sm-4 col-lg-2"  >
+            
+            <mat-card class="imgs" (click)="toggleActive($event)">
+              <mat-icon class="ins">text_snippet</mat-icon>
+              <h4>SUBSCRIPTION</h4>
+              <h4>MANAGER</h4>
+            </mat-card>
+           </div>   
+           
+           
+           <div class="col-sm-4 col-lg-2" >
+            
+            <mat-card class="imgs" (click)="toggleActive($event)">
+              <mat-icon class="ins">dns</mat-icon>
+              <h4>SUPPORT</h4>
+              <h4>MANAGER</h4>
+            </mat-card>
+           </div>   
+
+
+           <div class="col-sm-4 col-lg-2"  >
+            
+            <mat-card class="imgs" (click)="toggleActive($event)">
+              <mat-icon class="ins">local_post_office</mat-icon>
+              <h4>SMS</h4>
+              <h4>MANAGER</h4>
+            </mat-card>
+           </div>   
+           
+
+    </div>
+
+</div>

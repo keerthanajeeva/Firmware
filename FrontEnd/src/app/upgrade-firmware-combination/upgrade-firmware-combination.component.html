@@ -1,0 +1,44 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <p class="tyt"><span>Menu</span> > <span (click)="dash()">Fireware Manager</span> > <span>Upload Firmware Version</span> > <span>Customer Ashok Leyland</span></p>
+            <mat-divider></mat-divider>
+        </div>
+    </div>
+</div>
+<p class="tyts">Upgrade Firmware Combination</p>
+
+<mat-card>
+    <form #accountForm="ngForm" >
+        
+     
+        <div class="col-sm-12" >
+            <mat-form-field style="width: 100%;" appearance="standard">
+                <mat-label>JAVA VERSION</mat-label>
+                <mat-select name="javaV" placeholder="JAVA VERSION" ngModel  [(ngModel)]="Upgrade.javaV"  required>
+                    <mat-option value="tap68">TAP68</mat-option>
+                    <mat-option value="tap88">TAP88</mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+        </div>
+      
+        <div class="col-sm-12" >
+            <mat-form-field style="width: 100%;" appearance="standard">
+                <mat-label>C VERSION</mat-label>
+                <mat-select name="CV" placeholder="C VERSION" ngModel  [(ngModel)]="Upgrade.CV"  required>
+                    <mat-option value="tap76c">TAP76C</mat-option>
+                    <mat-option value="tap76d">TAP76D</mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+        </div>
+
+        <button mat-raised-button (click)="onClicking(accountForm)" class="one">
+            SUBMIT FIRMWARE COMBINATION
+        </button>
+      
+    </form>
+</mat-card>
+

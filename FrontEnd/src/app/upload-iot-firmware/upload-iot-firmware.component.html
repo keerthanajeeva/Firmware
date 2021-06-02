@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <p class="tyt"><span>Menu</span> > <span (click)="dash()">Fireware Manager</span> > <span>Upload Firmware Version</span> > <span>Customer Ashok Leyland</span></p>
+            <mat-divider></mat-divider>
+        </div>
+    </div>
+</div>
+<p class="tyts">Upload IOT Firmware</p>
+
+<mat-card>
+    <form #accountForm="ngForm" enctype="multipart/form-data">
+        <!-- <div class="col-sm-12"> 
+            <mat-form-field style="width: 100%;"  appearance="standard">
+               <mat-label >VERSION NAME</mat-label>
+                <input matInput  name="versionName" placeholder="VERSION NAME" ngModel maxlength="25" [(ngModel)]="uploadIot.versionName" required >
+
+            </mat-form-field>
+        </div>
+     
+      -->
+      
+       
+        <button mat-raised-button (click)="fileInput.click()" class="one">
+            <mat-icon class="con1">file_upload</mat-icon>
+            File Upload
+        </button>
+        <input #fileInput  type="file" name="files"  accept=".hex" id="myfile" (change)="postMethod($event.target.files)" style="display:none;" />
+       
+
+        <div class="col-sm-12">
+            <mat-form-field style="width: 100%;" appearance="standard">
+                <mat-label >FILE NAME</mat-label>
+                <input matInput  name="filename" placeholder="FILE NAME" ngModel  [(ngModel)]="filename" disabled required>
+
+            </mat-form-field>
+        </div>
+        <!-- <button mat-raised-button (click)="onClicking()" class="one">
+            <mat-icon>save</mat-icon>
+            SUBMIT
+        </button> -->
+        <!-- <button mat-raised-button type="reset"  (click)="reset(accountForm)" class="two">
+            <mat-icon>replay
+            </mat-icon>
+            RESET
+        </button> -->
+
+    </form>
+</mat-card>
+

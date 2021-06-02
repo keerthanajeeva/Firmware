@@ -1,0 +1,50 @@
+.tyt{
+    margin-bottom: 20px; color: #666666;
+   font-size: 15px;
+   font-weight: 700;
+   margin-top: 20px;
+   text-indent: 50px;
+   cursor: pointer;
+}
+
+.mat-card{
+    width: 600px;
+    margin: 40px;
+    padding: 40px;
+}
+.icons{
+    position: relative;
+    left: 43%;
+    font-size: 90px;
+    color: #666666;
+}
+
+.t1{
+    color: #666666;
+    font-weight: 600;
+    text-align: center;
+    font-size: 16px;
+}
+
+.one{
+    background-color: white;
+    border: 2px solid #005F9E;;
+    color: #005F9E;
+    margin-right: 20px;
+   
+   margin-left: 0px;
+  vertical-align: middle;
+  font-weight: 600;
+  letter-spacing: 1pt;
+
+}
+.con1{
+    vertical-align: middle;
+    padding-right: 40px;
+}
+.two{
+    background-color: #005F9E;
+    color: white;
+    margin-top: 30px;
+    letter-spacing: 1pt;
+}

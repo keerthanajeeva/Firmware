@@ -1,0 +1,70 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <p class="tyt"><span>Menu</span> > <span (click)="dash()">Fireware Manager</span> > <span>Upload Firmware Version</span> > <span>Customer Ashok Leyland</span></p>
+            <mat-divider></mat-divider>
+        </div>
+    </div>
+</div>
+<p class="tyts">Upload Java Firmware</p>
+
+<mat-card>
+    <form #accountForm="ngForm" >
+        <div class="col-sm-12"> 
+            <mat-form-field style="width: 100%;"  appearance="standard">
+               <mat-label >VERSION NAME</mat-label>
+                <input matInput  name="Name" placeholder="VERSION NAME" ngModel maxlength="25" [(ngModel)]="uploadJava.Name" #vnameControl="ngModel" required >
+
+            </mat-form-field>
+        </div>
+        <div class="col-sm-12">
+            <mat-form-field style="width: 100%;"  appearance="standard">
+                <mat-label >URL</mat-label>
+                <input matInput  name="ServerIP" placeholder="URL" ngModel  [(ngModel)]="uploadJava.ServerIP" required>
+
+            </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+            <mat-form-field style="width: 100%;" appearance="standard" >
+                <mat-label >USERNAME</mat-label>
+                <input matInput name="UserName" placeholder="USERNAME" ngModel maxlength="25" [(ngModel)]="uploadJava.UserName" required>
+
+            </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+            <mat-form-field style="width: 100%;" appearance="standard">
+                <mat-label >PASSWORD</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" name="Password"  ngModel  [(ngModel)]="uploadJava.Password" required>
+                <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-12">
+            <mat-form-field style="width: 100%;" appearance="standard">
+                <mat-label >FILE PATH</mat-label>
+                <input matInput  name="FilePath" placeholder="FILE PATH" ngModel  [(ngModel)]="uploadJava.FilePath"  required>
+
+            </mat-form-field>
+        </div>
+       
+        <div class="col-sm-12">
+            <mat-form-field style="width: 100%;" appearance="standard" >
+                <mat-label >RELEASE NOTES</mat-label>
+                <input matInput  name="ReleaseNote" placeholder="RELEASE NOTES" ngModel maxlength="25" [(ngModel)]="uploadJava.ReleaseNote" required>
+
+            </mat-form-field>
+        </div>
+
+        <button mat-raised-button (click)="onClicking(accountForm)" class="one">
+            <mat-icon>save</mat-icon>
+            SAVE
+        </button>
+        <button mat-raised-button type="reset"  (click)="reset(accountForm)" class="two">
+            <mat-icon>replay
+            </mat-icon>
+            RESET
+        </button>
+
+    </form>
+</mat-card>

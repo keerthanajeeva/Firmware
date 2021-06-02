@@ -1,0 +1,29 @@
+<form #addCommandForm="ngForm" style="text-align: center; margin: 20px;" >
+    
+        <mat-form-field appearance="outline" style="width: 100%;" >
+            <mat-label >Device Type</mat-label>
+            <input matInput name="deviceId" type="text" placeholder="Device Type"  ngModel [(ngModel)]="deviceId" required>
+
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" style="width: 100%;" >
+            <mat-label >Packet ID</mat-label>
+            <input matInput name="packetId" type="number" placeholder="Packet ID" ngModel  [(ngModel)]="packetId" required>
+
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" style="width: 100%;" >
+            <mat-label >Command Name</mat-label>
+            <input matInput name="name" placeholder="Command Name" ngModel  [(ngModel)]="name" required>
+
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" style="width: 100%;" >
+            <mat-label >Message Format</mat-label>
+            <input matInput name="message" placeholder="Message Format" ngModel  [(ngModel)]="message" required>
+
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="AddCommand(addCommandForm)" style=" background-color: #005F9E !important">
+            Submit
+        </button>
+</form>

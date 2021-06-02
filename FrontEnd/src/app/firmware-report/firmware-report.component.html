@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row">
+       <div class="col-12">
+          <p class="tyt"><span>Menu</span> > <span (click)="dash()">Fireware Manager</span> > <span>Firmware Report</span> > <span>Customer Ashok Leyland</span></p>
+          <mat-divider></mat-divider>
+       </div>
+    </div>
+ </div>
+ <p class="tyts">Firmware Report</p>
+ <mat-card class="scroll">
+    <p class="part"> Firmware Report Menu is used to download the searched devices' firmware information</p>
+    <p class="back">Note : Use "," between searched <b>Device ID</b></p>
+    <!-- <mat-form-field class="form" appearance="outline">
+       <input style="text-indent: 2em;" matInput  [(ngModel)]="searchedData"  placeholder="Search Device" #input>  
+        <mat-icon style="color: gray;" matPrefix>search</mat-icon>
+       
+       </mat-form-field>
+       <button (click)="search(searchedData)" mat-raised-button class="btn">SUBMIT</button> -->
+       
+    <mat-form-field class="form" appearance="outline">
+       <mat-label>Search Device  <mat-icon matPrefix>search</mat-icon></mat-label>
+       <input style="text-indent: 2em;" type="text"
+       aria-label="Number"
+       matInput  [(ngModel)]="searchedData" (ngModelChange)="onChanges($event)"  placeholder="Search Device" #input
+       [formControl]="myControl"
+       [matAutocomplete]="auto">
+       <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of devicelist" [value]="option.deviceid">
+          {{option.deviceid}}
+          </mat-option>
+       </mat-autocomplete>
+    
+    </mat-form-field>
+    <button (click)="search(searchedData)" mat-raised-button class="btn">SUBMIT</button>
+ </mat-card>
